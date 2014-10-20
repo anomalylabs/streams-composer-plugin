@@ -1,0 +1,37 @@
+{
+    "name": "streams/composer-plugin",
+    "description": "Composer plugin for streams platform.",
+    "keywords": ["streams","composer","plugin"],
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Osvaldo Brignoni",
+            "email": "obrignoni@anomaly.is"
+        }
+    ],
+    "require": {
+        "composer-plugin-api": "1.0.0"
+    },
+    "require-dev": {
+        "composer/composer": "1.0.*@dev",
+        "codeclimate/php-test-reporter": "dev-master",
+        "henrikbjorn/phpspec-code-coverage": "~0.2",
+        "phpspec/phpspec": "dev-master"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-2": {
+            "Streams\\ComposerPlugin\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "class": "Streams\\ComposerPlugin\\Plugin",
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
