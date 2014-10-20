@@ -23,7 +23,7 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-2": {
+        "psr-4": {
             "Streams\\ComposerPlugin\\": "src/"
         }
     },
