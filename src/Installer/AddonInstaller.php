@@ -54,16 +54,16 @@ class AddonInstaller extends LibraryInstaller
 
         preg_match($this->getRegex(), $packageName, $match);
 
-        if (count($match) != 2) {
+        if (count($match) != 3) {
             throw new \InvalidArgumentException(
                 'Invalid addon package name. Should be in the form of name-type.'
             );
         }
 
-        $type = str_replace('-','_',$match[1]);
-        $addon = str_replace('-','_',$match[0]);
+        $type = str_replace('-','_',$match[2]);
+        $addon = str_replace('-','_',$match[1]);
 
-        return "addons/shared/{$type}/{$addon}";
+        return "core/addons/shared/{$type}/{$addon}";
     }
 
     /**

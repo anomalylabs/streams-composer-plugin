@@ -35,7 +35,7 @@ class Plugin implements PluginInterface
         $installationManager = $composer->getInstallationManager();
 
         foreach ($this->installers as $class) {
-            $installationManager->addInstaller($this->getInstaller($class, $io, $composer));
+            $installationManager->addInstaller($this->getInstaller($class, $composer, $io));
         }
     }
 

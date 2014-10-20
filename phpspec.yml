@@ -1,0 +1,17 @@
+suites:
+    plugin_suite:
+        namespace: Streams\ComposerPlugin
+        psr4_prefix: Streams\ComposerPlugin
+
+extensions:
+  - PhpSpec\Extension\CodeCoverageExtension
+
+code_coverage:
+  format:
+    - html
+    - clover
+  output:
+    html: build/coverage
+    clover: build/logs/clover.xml
+
+formatter.name: pretty
