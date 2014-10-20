@@ -60,8 +60,8 @@ class AddonInstaller extends LibraryInstaller
             );
         }
 
-        $type = str_replace('-','_',$match[2]);
-        $addon = str_replace('-','_',$match[1]);
+        $type  = str_replace('-', '_', $match[2]);
+        $addon = str_replace('-', '_', $match[1]);
 
         return "core/addons/shared/{$type}/{$addon}";
     }
@@ -72,6 +72,16 @@ class AddonInstaller extends LibraryInstaller
     public function supports($packageType)
     {
         return 'streams-addon' === $packageType;
+    }
+
+    /**
+     * Do NOT update addons
+     *
+     * @param PackageInterface $initial
+     * @param PackageInterface $target
+     */
+    protected function updateCode(PackageInterface $initial, PackageInterface $target)
+    {
     }
 
 } 

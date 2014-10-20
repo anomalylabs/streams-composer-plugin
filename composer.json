@@ -19,7 +19,7 @@
         "henrikbjorn/phpspec-code-coverage": "~0.2",
         "phpspec/phpspec": "2.0.*@dev"
     },
-    "bin": ["bin/streams-composer-plugin"],
+    "bin": ["bin/streams-post-install"],
     "config": {
         "bin-dir": "bin"
     },

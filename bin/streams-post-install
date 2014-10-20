@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find core -type d -print0 | xargs -0 chmod 777
+find core -type f -print0 | xargs -0 chmod 644
