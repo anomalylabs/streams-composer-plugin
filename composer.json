@@ -1,5 +1,5 @@
 {
-    "name": "streams/composer-plugin",
+    "name": "anomaly/streams-composer-plugin",
     "description": "Composer plugin for streams platform.",
     "keywords": ["streams","composer","plugin"],
     "type": "composer-plugin",
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Streams\\ComposerPlugin\\": "src/"
+            "Anomaly\\StreamsComposerPlugin\\": "src/"
         }
     },
     "minimum-stability": "dev",
     "extra": {
-        "class": "Streams\\ComposerPlugin\\Plugin",
+        "class": "Anomaly\\StreamsComposerPlugin\\Plugin",
         "branch-alias": {
             "dev-master": "0.1.x-dev"
         }

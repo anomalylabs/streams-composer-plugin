@@ -1,4 +1,4 @@
-<?php namespace Streams\ComposerPlugin\Installer;
+<?php namespace Anomaly\StreamsComposerPlugin\Installer;
 
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
