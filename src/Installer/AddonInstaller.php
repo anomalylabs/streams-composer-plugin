@@ -6,7 +6,7 @@ use Composer\Package\PackageInterface;
 /**
  * Class AddonInstaller
  *
- * @package Streams\ComposerPlugin\Installer
+ * @package Anomaly\StreamsComposerPlugin\Installer
  */
 class AddonInstaller extends LibraryInstaller
 {
@@ -63,7 +63,7 @@ class AddonInstaller extends LibraryInstaller
         $type  = str_replace('-', '_', $match[2]);
         $addon = str_replace('-', '_', $match[1]);
 
-        return "core/addons/shared/{$type}/{$addon}";
+        return "core/{$type}/{$addon}";
     }
 
     /**
@@ -84,4 +84,4 @@ class AddonInstaller extends LibraryInstaller
     {
     }
 
-} 
+}

@@ -1,4 +1,4 @@
-<?php namespace spec\Streams\ComposerPlugin;
+<?php namespace spec\Anomaly\StreamsComposerPlugin;
 
 use Composer\Composer;
 use Composer\Config;
@@ -25,7 +25,7 @@ class PluginSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Streams\ComposerPlugin\Plugin');
+        $this->shouldHaveType('Anomaly\StreamsComposerPlugin\Plugin');
     }
 
     function it_activates(IOInterface $io)
@@ -37,7 +37,7 @@ class PluginSpec extends ObjectBehavior
     {
         $this
             ->getInstaller('AddonInstaller', $this->composerStub, $io)
-            ->shouldHaveType('Streams\ComposerPlugin\Installer\AddonInstaller');
+            ->shouldHaveType('Anomaly\StreamsComposerPlugin\Installer\AddonInstaller');
     }
 
 }

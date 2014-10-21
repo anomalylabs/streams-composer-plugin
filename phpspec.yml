@@ -1,7 +1,7 @@
 suites:
     plugin_suite:
-        namespace: Streams\ComposerPlugin
-        psr4_prefix: Streams\ComposerPlugin
+        namespace: Anomaly\StreamsComposerPlugin
+        psr4_prefix: Anomaly\StreamsComposerPlugin
 
 extensions:
   - PhpSpec\Extension\CodeCoverageExtension

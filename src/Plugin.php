@@ -9,7 +9,7 @@ use Composer\Plugin\PluginInterface;
 /**
  * Class Plugin
  *
- * @package Streams\ComposerPlugin
+ * @package Anomaly\StreamsComposerPlugin
  */
 class Plugin implements PluginInterface
 {
