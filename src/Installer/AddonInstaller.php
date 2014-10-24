@@ -17,13 +17,13 @@ class AddonInstaller extends LibraryInstaller
      * @var array
      */
     protected $types = [
-        'block',
-        'distribution',
-        'extension',
-        'field-type',
-        'module',
-        'tag',
-        'theme',
+        'distribution' => 'distributions',
+        'field-type'   => 'field_types',
+        'extension'    => 'extensions',
+        'module'       => 'modules',
+        'block'        => 'blocks',
+        'theme'        => 'themes',
+        'tag'          => 'tags',
     ];
 
     /**
@@ -33,7 +33,8 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getRegex()
     {
-        $types = implode('|', $this->types);
+        $types = implode('|', array_keys($this->types));
+
         return "/^([a-zA-Z-_]+)-({$types})$/";
     }
 
@@ -60,10 +61,10 @@ class AddonInstaller extends LibraryInstaller
             );
         }
 
-        $type  = str_replace('-', '_', $match[2]);
-        $addon = str_replace('-', '_', $match[1]);
+        $folder = $this->types[$match[2]];
+        $addon  = str_replace('-', '_', $match[1]);
 
-        return "core/{$type}/{$addon}";
+        return "core/{$folder}/{$addon}";
     }
 
     /**
