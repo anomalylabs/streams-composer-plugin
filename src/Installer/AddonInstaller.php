@@ -74,13 +74,7 @@ class AddonInstaller extends LibraryInstaller
         $folder = $this->types[$match[2]];
         $addon  = str_replace('-', '_', $match[1]);
 
-        $path = "core/{$folder}/{$addon}";
-
-        if ($this->testingIsEnabled()) {
-            $path = "vendor/anomaly/streams/core/{$folder}/{$addon}";
-        }
-
-        return $path;
+        return "core/{$folder}/{$addon}";
     }
 
     /**
@@ -89,16 +83,6 @@ class AddonInstaller extends LibraryInstaller
     public function supports($packageType)
     {
         return 'streams-addon' === $packageType;
-    }
-
-    /**
-     * Testing is enabled
-     *
-     * @return mixed|null
-     */
-    public function testingIsEnabled()
-    {
-        return $this->composer->getConfig()->get('streams-composer-plugin-testing');
     }
 
     /**

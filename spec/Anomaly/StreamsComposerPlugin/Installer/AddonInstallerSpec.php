@@ -44,29 +44,6 @@ class AddonInstallerSpec extends ObjectBehavior
         $this->getPackageBasePath($package)->shouldReturn('core/modules/foo_bar');
     }
 
-    function it_gets_package_base_path_for_testing(IOInterface $io)
-    {
-        $this->composerStub = new Composer();
-        $this->composerStub->setInstallationManager(new InstallationManager());
-        Config::$defaultConfig['streams-composer-plugin-testing'] = true;
-        $config = new Config();
-        $this->composerStub->setConfig($config);
-        $this->beConstructedWith($io, $this->composerStub);
-        $package = new Package('anomaly/foo-bar-module', 1.0, 1.0);
-        $this->getPackageBasePath($package)->shouldReturn('vendor/anomaly/streams/core/modules/foo_bar');
-    }
-
-    function it_enables_package_testing(IOInterface $io)
-    {
-        $this->composerStub = new Composer();
-        $this->composerStub->setInstallationManager(new InstallationManager());
-        Config::$defaultConfig['streams-composer-plugin-testing'] = true;
-        $config = new Config();
-        $this->composerStub->setConfig($config);
-        $this->beConstructedWith($io, $this->composerStub);
-        $this->testingIsEnabled()->shouldBe(true);
-    }
-
     function it_enables_package_update(IOInterface $io)
     {
         $this->composerStub = new Composer();
