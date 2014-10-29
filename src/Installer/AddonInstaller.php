@@ -2,6 +2,7 @@
 
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
+use Composer\Repository\InstalledRepositoryInterface;
 
 /**
  * Class AddonInstaller
@@ -27,14 +28,23 @@ class AddonInstaller extends LibraryInstaller
     ];
 
     /**
+     * Get types
+     *
+     * @return string
+     */
+    public function getTypes()
+    {
+        return implode('|', array_keys($this->types));
+    }
+
+    /**
      * Get regex
      *
      * @return string
      */
     public function getRegex()
     {
-        $types = implode('|', array_keys($this->types));
-
+        $types = $this->getTypes();
         return "/^([a-zA-Z-_]+)-({$types})$/";
     }
 
@@ -64,7 +74,13 @@ class AddonInstaller extends LibraryInstaller
         $folder = $this->types[$match[2]];
         $addon  = str_replace('-', '_', $match[1]);
 
-        return "core/{$folder}/{$addon}";
+        $path = "core/{$folder}/{$addon}";
+
+        if ($this->testingIsEnabled()) {
+            $path = "vendor/anomaly/streams/core/{$folder}/{$addon}";
+        }
+
+        return $path;
     }
 
     /**
@@ -76,13 +92,36 @@ class AddonInstaller extends LibraryInstaller
     }
 
     /**
+     * Testing is enabled
+     *
+     * @return mixed|null
+     */
+    public function testingIsEnabled()
+    {
+        return $this->composer->getConfig()->get('streams-composer-plugin-testing');
+    }
+
+    /**
+     * Update is enabled
+     *
+     * @return mixed|null
+     */
+    public function updateIsEnabled()
+    {
+        return $this->composer->getConfig()->get('streams-composer-plugin-update');
+    }
+
+    /**
      * Do NOT update addons
      *
      * @param PackageInterface $initial
      * @param PackageInterface $target
      */
-    protected function updateCode(PackageInterface $initial, PackageInterface $target)
+    public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
+        if ($this->updateIsEnabled()) {
+            parent::update($repo, $initial, $target);
+        }
     }
 
 }
