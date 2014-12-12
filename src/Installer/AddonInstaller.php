@@ -92,7 +92,7 @@ class AddonInstaller extends LibraryInstaller
      */
     public function updateIsEnabled()
     {
-        return $this->composer->getConfig()->get('streams-composer-plugin-update');
+        return $this->composer->getConfig()->get('streams-composer-plugin-update', true);
     }
 
     /**
