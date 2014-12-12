@@ -92,7 +92,7 @@ class AddonInstaller extends LibraryInstaller
      */
     public function updateIsEnabled()
     {
-        return $this->composer->getConfig()->get('streams-composer-plugin-update', true);
+        return $this->composer->getConfig()->get('streams-composer-plugin-update');
     }
 
     /**
@@ -103,7 +103,7 @@ class AddonInstaller extends LibraryInstaller
      */
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
-        if ($this->updateIsEnabled()) {
+        if (true) {
             parent::update($repo, $initial, $target);
         }
     }
