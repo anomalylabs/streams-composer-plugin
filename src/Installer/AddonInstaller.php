@@ -22,9 +22,9 @@ class AddonInstaller extends LibraryInstaller
         'field-type'   => 'field_types',
         'extension'    => 'extensions',
         'module'       => 'modules',
+        'plugin'       => 'plugins',
         'block'        => 'blocks',
         'theme'        => 'themes',
-        'tag'          => 'tags',
     ];
 
     /**
@@ -45,6 +45,7 @@ class AddonInstaller extends LibraryInstaller
     public function getRegex()
     {
         $types = $this->getTypes();
+
         return "/^([a-zA-Z-_]+)-({$types})$/";
     }
 
@@ -107,5 +108,4 @@ class AddonInstaller extends LibraryInstaller
             parent::update($repo, $initial, $target);
         }
     }
-
 }
