@@ -58,7 +58,7 @@ class AddonInstaller extends LibraryInstaller
 
         if (count($parts) != 2) {
             throw new \InvalidArgumentException(
-                'Invalid package name. Should be in the form of vendor/package.'
+                'Invalid package name. Should be in the form of vendor/package'
             );
         }
 
@@ -68,14 +68,11 @@ class AddonInstaller extends LibraryInstaller
 
         if (count($match) != 3) {
             throw new \InvalidArgumentException(
-                'Invalid addon package name. Should be in the form of name-type.'
+                'Invalid addon package name. Should be in the form of name-type'
             );
         }
 
-        $folder = $this->types[$match[2]];
-        $addon  = str_replace('-', '_', $match[1]);
-
-        return "core/{$folder}/{$addon}";
+        return "core/{$parts[0]}/{$parts[1]}";
     }
 
     /**
