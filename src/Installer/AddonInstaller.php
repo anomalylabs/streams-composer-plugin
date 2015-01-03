@@ -18,13 +18,13 @@ class AddonInstaller extends LibraryInstaller
      * @var array
      */
     protected $types = [
-        'distribution' => 'distributions',
-        'field-type'   => 'field_types',
-        'extension'    => 'extensions',
-        'module'       => 'modules',
-        'plugin'       => 'plugins',
-        'block'        => 'blocks',
-        'theme'        => 'themes',
+        'distribution',
+        'field_type',
+        'extension',
+        'module',
+        'plugin',
+        'block',
+        'theme',
     ];
 
     /**
@@ -34,7 +34,7 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getTypes()
     {
-        return implode('|', array_keys($this->types));
+        return implode('|', $this->types);
     }
 
     /**
