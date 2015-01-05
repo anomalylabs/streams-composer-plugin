@@ -54,11 +54,13 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getPackageBasePath(PackageInterface $package)
     {
-        $parts = explode('/', $package->getPrettyName());
+        $name = $package->getPrettyName();
+
+        $parts = explode('/', $name);
 
         if (count($parts) != 2) {
             throw new \InvalidArgumentException(
-                'Invalid package name. Should be in the form of vendor/package'
+                "Invalid package name [{$name}]. Should be in the form of vendor/package"
             );
         }
 
