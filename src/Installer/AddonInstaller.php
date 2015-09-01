@@ -70,7 +70,7 @@ class AddonInstaller extends LibraryInstaller
 
         if (count($match) != 3) {
             throw new \InvalidArgumentException(
-                "Invalid addon package name [{$name}]. Should be in the form of name-type"
+                "Invalid addon package name [{$name}]. Should be in the form of name-type [{$packageName}]."
             );
         }
 
