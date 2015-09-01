@@ -46,7 +46,7 @@ class AddonInstaller extends LibraryInstaller
     {
         $types = $this->getTypes();
 
-        return "/^([a-zA-Z-_]+)-({$types})$/";
+        return "/^([a-zA-Z1-9-_]+)-({$types})$/";
     }
 
     /**
