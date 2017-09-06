@@ -50,7 +50,10 @@ class AddonInstaller extends LibraryInstaller
     }
 
     /**
-     * {@inheritDoc}
+     * Gets the path for addon install
+     *
+     * @param  Composer\Package\PackageInterface $package
+     * @return string
      */
     public function getInstallPath(PackageInterface $package)
     {
@@ -78,9 +81,12 @@ class AddonInstaller extends LibraryInstaller
     }
 
     /**
-     * {@inheritDoc}
+     * Determines whether a package should be processed
+     *
+     * @param  string
+     * @return bool
      */
-    public function supports($packageType)
+    public function supports(string $packageType)
     {
         return 'streams-addon' === $packageType;
     }
@@ -98,13 +104,18 @@ class AddonInstaller extends LibraryInstaller
     /**
      * Do NOT update addons
      *
-     * @param PackageInterface $initial
-     * @param PackageInterface $target
+     * @param Composer\Repository\InstalledRepositoryInterface $repository
+     * @param Composer\Package\PackageInterface                $initial
+     * @param Composer\Package\PackageInterface                $target
      */
-    public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
+    public function update(
+        InstalledRepositoryInterface $repository,
+        PackageInterface $initial,
+        PackageInterface $target
+    )
     {
         if (true) {
-            parent::update($repo, $initial, $target);
+            parent::update($repository, $initial, $target);
         }
     }
 }
