@@ -86,7 +86,7 @@ class AddonInstaller extends LibraryInstaller
      * @param  string
      * @return bool
      */
-    public function supports(string $packageType)
+    public function supports($packageType)
     {
         return 'streams-addon' === $packageType;
     }
