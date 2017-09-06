@@ -30,11 +30,11 @@ class AddonInstaller extends LibraryInstaller
     /**
      * Get types
      *
-     * @return string
+     * @return array
      */
     public function getTypes()
     {
-        return implode('|', $this->types);
+        return $this->types;
     }
 
     /**
@@ -44,7 +44,7 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getRegex()
     {
-        $types = $this->getTypes();
+        $types = implode('|', $this->getTypes());
 
         return "/^([\w-]+)-({$types})$/";
     }
