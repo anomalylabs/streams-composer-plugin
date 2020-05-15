@@ -57,17 +57,27 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
+
         $name = $package->getPrettyName();
+        $casedNamespace = array_keys($package->getAutoload()['psr-4'])[0];
 
-        $parts = explode('/', $name);
+        $nameParts = explode('/', $name);
+        $casedParts = explode('\\', rtrim($casedNamespace, '\\'));
 
-        if (count($parts) != 2) {
+        if (count($nameParts) != 2) {
             throw new \InvalidArgumentException(
                 "Invalid package name [{$name}]. Should be in the form of vendor/package"
             );
         }
 
-        $packageName = $parts[1];
+        if (count($casedParts) <= 1) {
+            throw new \InvalidArgumentException(
+                "Invalid psr-4 autoload package namespace [{$casedNamespace}]. Should be in the form of Vendor\\Package\\"
+            );
+        }
+
+        $vendorDir = $this->pascalToSnakeCase($casedParts[0]);
+        $packageName = $nameParts[1];
 
         preg_match($this->getRegex(), $packageName, $match);
 
@@ -77,7 +87,19 @@ class AddonInstaller extends LibraryInstaller
             );
         }
 
-        return "core/{$parts[0]}/{$parts[1]}";
+        return "core/{$vendorDir}/{$nameParts[1]}";
+    }
+
+    /**
+     * Converts a PascalCase PHP namespace root into snake case.
+     *
+     * @param string $string
+     * @return string
+     */
+    private function pascalToSnakeCase(string $string)
+    {
+        $value = preg_replace('/(.)(?=[A-Z])/u', '$1_', $string);
+        return strtolower($value);
     }
 
     /**
